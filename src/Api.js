@@ -1,5 +1,5 @@
 import React, {useState } from 'react'
-import {Col, Container,Image, Row} from 'react-bootstrap'
+import {Col, Container,FormControl,Image, Row} from 'react-bootstrap'
 import { WiBarometer, WiHumidity, WiStrongWind, WiThermometer, WiWindDeg, WiWindy } from "react-icons/wi";
 import { FaGlobe } from "react-icons/fa";
 import  axios from 'axios'
@@ -23,26 +23,34 @@ const Api = () => {
   return (
     <div className='body'>
      <Container className='mt-5'>
-     <div className="input">
+    <div className="input">
+    
+                   <div >
                        <input type="text" 
                        placeholder='Enter City Name'
                        value={city}
                        onChange={(e)=>setCity(e.target.value)}
                        />
-                        <button className='btn btn-primary fs-5'id='button' onClick={fetchData}>
+                    </div>
+     
+      <div className="search">
+      <button className='btn btn-primary fs-5'id='button' onClick={fetchData}>
                         Search
                       </button>
-                    </div>
+      </div>
+    
+    </div>
      </Container>
 
                     {data && <div>
                       <Container className='mt-5 '>
+                <div className="all-pr">
                 <Row>
-                  <Col md={6} className='me-3'>
+                  <Col md={6} sm={6} className=''>
                     <div className="details">
-                      <Container>
+                      
                         <Row>
-                          <Col md={6}  xs={6} className='all'>
+                          <Col md={6}  xs={6} className='all mx-auto'>
                            <p className='city-name'>
                               {data.name}
                            </p>
@@ -60,12 +68,13 @@ const Api = () => {
                             </p>
                           </Col>
                         </Row>
-                      </Container>
+                      
                     </div>
                     <div className="details-2">
-                      <Container>
-                        <Row>
-                          <Col  md={5} xs={5}  className='me-4'>
+                     
+                       <Container>
+                       <Row>
+                          <Col  md={5} xs={4}  className='me-4'>
                           <div className='preassure'>
                             <div className="icon">
                             <WiBarometer/>
@@ -74,7 +83,7 @@ const Api = () => {
                            <p> {data.main.pressure} mb</p>
                           </div>
                           </Col>
-                          <Col md={5} xs={5} className='ms-4'>
+                          <Col md={5} xs={4} className='ms-4'>
                           <div className='humidity'>
                             <div className="icon">
                             <WiHumidity/>
@@ -84,8 +93,10 @@ const Api = () => {
                           </div>
                           </Col>
                          </Row>
+                       </Container>
+                         <Container>
                          <Row>
-                          <Col  md={5} xs={5} className='me-4'>
+                          <Col  md={5} xs={4} className='me-4'>
                           <div className='speed'>
                            <div className="icon">
                            <WiStrongWind/>
@@ -94,7 +105,7 @@ const Api = () => {
                           <p>{data.wind.speed} Km/hr</p>
                           </div>
                           </Col>
-                          <Col  md={5} xs={5} className='ms-4'>
+                          <Col  md={5} xs={4} className='ms-4'>
                           <div className='deg'>
                             <div className="icon">
                             <WiWindDeg/>
@@ -104,12 +115,14 @@ const Api = () => {
                           </div>
                           </Col>
                         </Row>
-                      </Container>
+                         </Container>
+                      
                     </div>
                   </Col>
 
 
-                  <Col md={5} className='mt-4 mb-5'>
+                 
+                 <Col className='mt-4 mb-5' md={6} sm={6}>
                   <div className="add-info">
                       <table>
                         <thead>
@@ -163,7 +176,9 @@ const Api = () => {
                   </div> 
 
                   </Col>
+                 
                 </Row>
+                </div>
       </Container>
                       </div>}
       
