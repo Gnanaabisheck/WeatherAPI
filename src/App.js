@@ -1,13 +1,13 @@
+import React from 'react'
+import Api from './Api'
 
-import Api from './Api';
-function App() {
+
+const App = () => {
   return (
-
-    <div className="App">
-        <Api />
-      </div>
-   
-  );
+    <div>
+      <Api/>
+    </div>
+  )
 }
 
-export default App;
+export default App
