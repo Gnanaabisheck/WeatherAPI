@@ -1,5 +1,5 @@
 import React, {useState } from 'react'
-import {Col, Container,FormControl,Image, Row} from 'react-bootstrap'
+import {Col, Container,FormControl,Image, Row, Table} from 'react-bootstrap'
 import { WiBarometer, WiHumidity, WiStrongWind, WiThermometer, WiWindDeg, WiWindy } from "react-icons/wi";
 import { FaGlobe } from "react-icons/fa";
 import  axios from 'axios'
@@ -23,18 +23,19 @@ const Api = () => {
   return (
     <div className='body'>
      <Container className='mt-5'>
-    <div className="input">
+    <div className="input d-flex">
     
                    <div >
-                       <input type="text" 
+                       <FormControl type="text" 
                        placeholder='Enter City Name'
+                       className='w-100 py-3 my-1 fs-5 text-capitalize px-4'
                        value={city}
                        onChange={(e)=>setCity(e.target.value)}
                        />
                     </div>
      
       <div className="search">
-      <button className='btn btn-primary fs-5'id='button' onClick={fetchData}>
+      <button className='btn btn-primary mx-3 py-2 my-2 fs-4'id='button' onClick={fetchData}>
                         Search
                       </button>
       </div>
@@ -49,7 +50,7 @@ const Api = () => {
                   <Col md={6} sm={6} className=''>
                     <div className="details">
                       
-                        <Row>
+                        <Row className='d-flex'>
                           <Col md={6}  xs={6} className='all mx-auto'>
                            <p className='city-name'>
                               {data.name}
@@ -119,15 +120,16 @@ const Api = () => {
                       
                     </div>
                   </Col>
+                  
 
 
                  
                  <Col className='mt-4 mb-5' md={6} sm={6}>
                   <div className="add-info">
-                      <table>
+                      <Table variant='dark'>
                         <thead>
                           <tr>
-                            <td colSpan={3} className='text-center'>
+                            <td colSpan={3} className='text-center p-3 fs-3'>
                               Other Informations
                             </td>
                           </tr>
@@ -137,10 +139,10 @@ const Api = () => {
                     <tr>
                     
                     <td>
-                    <WiThermometer id='icon'/>
+                    <WiThermometer id='icon' className='fs-1'/>
                     </td>
                   
-                     <td>Max Temprature</td>  
+                     <td >Max Temprature</td>  
                  
                     <td>{data.main.temp_max}&deg;C</td>      
                   </tr>
@@ -172,7 +174,7 @@ const Api = () => {
                     <td> {data.main.feels_like}&deg;C</td>
                   </tr>
                     </tbody>
-                      </table>
+                      </Table>
                   </div> 
 
                   </Col>
